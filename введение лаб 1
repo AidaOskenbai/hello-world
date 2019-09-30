@@ -11,26 +11,32 @@ print (S,P)
 Дан диаметр окружности d. Найти ее длину L = π·d. В качестве
 значения π использовать 3.14.
 
-d=int(input())
-print(3.14*d)
+d=int (input())
+print (3.14*d)
 
 
 Даны два числа a и b. Найти их среднее арифметическое: (a + b)/2.
 
-a=int(input())
-b=int(input())
-print((a+b)/2)
+a=int (input())
+b=int (input())
+print ((a+b)/2)
 
 Даны два ненулевых числа. Найти сумму, разность, произведение и
 частное их квадратов.
 
-a=int(input())
-b=int(input())
-print(a**2+b**2)
-print(a**2-b**2)
-print(a**2*b**2)
-print(a**2/b**2)
+a=int (input())
+b=int (input())
+print (a**2+b**2)
+print (a**2-b**2)
+print (a**2*b**2)
+print (a**2/b**2)
 
 Даны два ненулевых числа. Найти сумму, разность, произведение и
 частное их модулей.
 
+a=int(input())
+b=int(input())
+print (abs(a)+abs(b))
+print (abs(a)-abs(b))
+print ((abs(a))*(abs(b)))
+print ((abs(a))/(abs(b)))
