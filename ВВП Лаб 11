@@ -13,7 +13,7 @@ a = int(input())
 b = int(input())
 n = b 
 
-while n < a - b:
+while n <= a - b:
     n = n + b 
 print (a - n)
 
