@@ -1,0 +1,148 @@
+1. Дан целочисленный массив A размера N. Назовем серией группу подряд идущих одинаковых элементов, а длиной серии — количество этих элементов (длина серии может быть равна 1). Сформировать два новых целочисленных массива B и C одинакового размера, записав в массив B длины всех серий исходного массива, а в массив C — значения элементов, образующих эти серии
+
+n = int(input())
+a = [0]*n
+lenght = 1
+b = []
+c = []
+
+print("Введите массив А.")
+for i in range(n):
+    a[i] = int(input())
+
+a.append("что-то, чему точно не равен последний элемент")
+
+for i in range(n):
+    if a[i] == a[i+1]:
+        lenght += 1
+    else:
+        b.append(lenght)
+        c.append(a[i])
+        lenght = 1
+       
+print(b, c)
+
+
+2. Дано целое число L (> 0) и целочисленный массив размера N. Заменить каждую серию массива, длина которой больше L, на один элемент с нулевым значением
+
+print("Введите число L:")
+l = int(input())
+
+print("Введите длину массива:")
+n = int(input())
+
+a = [0]*n
+lenght = 1
+b = []
+c = []
+
+print("Введите массив А:")
+for i in range(n):
+    a[i] = int(input())
+
+a.append("что-то, чему точно не равен последний элемент")
+
+for i in range(n):
+    
+    if a[i] == a[i+1]:
+        lenght += 1
+    elif lenght > l:
+        b.append(1)
+        c.append(0)
+        lenght = 1
+    else:
+        b.append(lenght)
+        c.append(a[i])
+        lenght = 1
+       
+print(b, c)
+
+
+3. Дано целое число K (> 0) и целочисленный массив размера N. Поменять местами последнюю серию массива и его серию с номером K 
+
+print("Введите число K:")
+k = int(input())
+
+print("Введите длину массива:")
+n = int(input())
+
+a = [0]*n
+lenght = 1
+b = []
+c = []
+
+print("Введите массив А.")
+for i in range(n):
+    a[i] = int(input())
+
+a.append("что-то, чему точно не равен последний элемент")
+
+for i in range(n):
+    if a[i] == a[i+1]:
+        lenght += 1
+    else:
+        b.append(lenght)
+        c.append(a[i])
+        lenght = 1
+        
+b[len(b)-1], b[k-1] = b[k-1], b[len(b)-1],
+c[len(c)-1], c[k-1] = c[k-1], c[len(c)-1],
+
+print(b, c)
+
+
+4. Дано множество A из N точек (точки заданы своими координатами x, y). Среди всех точек этого множества, лежащих во второй четверти, найти точку, наиболее удаленную от начала координат. Если таких точек нет, то вывести точку с нулевыми координатами
+
+print("Введите количество точек (N):")
+n = int(input())
+
+print("Введите координаты точек (x/пробел/y)")
+a = [[int(j) for j in input().split()] for i in range(n)]
+
+t = -100000000
+x = [0,0]
+
+for i in range(n):
+    if a[i][0] < 0 and a[i][1] > 0:
+        if ((a[i][0])**2 + (a[i][1])**2)**0.5 > t:
+            t = ((a[i][0])**2 + (a[i][1])**2)**0.5
+            x = [a[i][0], a[i][1]]
+
+print(x)
+
+
+5. Дано множество A из N точек (N > 2, точки заданы своими координатами x, y). Найти наибольший периметр треугольника, вершины которого принадлежат различным точкам множества A, и сами эти точки (точки выводятся в том же порядке, в котором они перечислены при задании множества A).
+
+def length(massive, a, b):
+    return (((massive[a][0] - massive[b][0])**2 + (massive[a][1] - massive[b][1])**2)**0.5)
+    
+def perimeter(massive, a, b, c):
+    return(length(massive, a, b) + length(massive, b, c) + length(massive, a, c))
+        
+    
+print("Введите количество точек (N):")
+n = int(input())
+
+print("Введите координаты точек (x/пробел/y)")
+a = [[int(j) for j in input().split()] for i in range(n)]
+
+maxPerimeter = -1
+ab = [0,0]
+bc = [0,0]
+ac = [0,0]
+
+for i in range(n):                      
+        for j in range(1, n):              
+            for k in range(2, n):             
+                tmpPerimeter = perimeter(a, i, j, k); 
+                if tmpPerimeter > maxPerimeter:     
+                    maxPerimeter = tmpPerimeter      
+                    ab = [a[i][0],a[i][1]]                               
+                    bc = [a[j][0],a[j][1]]                                   
+                    ac = [a[k][0],a[k][1]] 
+
+print ("Максимальный периметр = ", maxPerimeter)               
+print ("Точка AB = ", ab)
+print ("Точка BС = ", bc)
+print ("Точка AC = ", ac)
+
