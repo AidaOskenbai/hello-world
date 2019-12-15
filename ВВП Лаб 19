@@ -1,0 +1,150 @@
+1. Дана матрица размера M × N. Преобразовать матрицу, поменяв местами минимальный и максимальный элемент в каждой строке.
+
+print("Введите число строк матрицы (М):")
+m = int(input())
+print("Введите число столбцов матрицы (N):")
+n = int(input())
+
+print("Теперь введите элементы матрицы:")
+a = [[int(input()) for j in range(n)] for i in range(m)]
+
+print("Вы ввели матрицу:")
+for i in range (m):
+    print(a[i])
+      
+for i in range (m):
+    for j in range (n):
+        if a[i][j] == max(a[i]):
+            t_max = j
+        if a[i][j] == min(a[i]):
+            t_min = j
+    a[i][t_max], a[i][t_min] = a[i][t_min], a[i][t_max]
+
+print("Преобразованная матрица:")
+for i in range (m):
+    print(a[i])
+    
+    
+2. Дана матрица размера M × N. Поменять местами столбцы, содержащие минимальный и максимальный элементы матрицы.
+
+print("Введите число строк матрицы (М):")
+m = int(input())
+print("Введите число столбцов матрицы (N):")
+n = int(input())
+
+print("Теперь введите элементы матрицы:")
+a = [[int(input()) for j in range(n)] for i in range(m)]
+
+print("Вы ввели матрицу:")
+for i in range (m):
+    print(a[i])
+
+for i in range (m):
+    for j in range (n):
+        if a[i][j] == (max(max(a))):
+            t_max = j
+        if a[i][j] == (min(min(a))):
+            t_min = j
+
+print("Преобразованная матрица:")
+for i in range (m):
+    for j in range (n):
+        if j == t_max:
+            a[i][j], a[i][t_min] = a[i][t_min], a[i][j]
+    print(a[i])
+    
+    
+3. Дана матрица размера M × N (M и N — четные числа). Поменять местами левую верхнюю и правую нижнюю четверти матрицы
+
+rint("Введите число строк матрицы (М):")
+m = int(input())
+
+while m%2 != 0:
+    print("Число М должно быть четными! Введите число строк матрицы (М):")
+    m = int(input())
+    
+print("Введите число столбцов матрицы (N):")
+n = int(input())
+
+while n%2 != 0:
+    print("Число N должно быть четными! Введите число столбцов матрицы (N):")
+    n = int(input())
+
+print("Теперь введите элементы матрицы:")
+a = [[int(input()) for j in range(n)] for i in range(m)]
+
+print("Вы ввели матрицу:")
+for i in range (m):
+    print(a[i])
+
+for i in range (m//2):
+    for j in range (n//2):
+        a[i][j], a[m//2+i][n//2+j] = a[m//2+i][n//2+j], a[i][j]
+
+print("Преобразованная матрица:")
+for i in range (m):
+    print(a[i])
+    
+    
+4. Дана матрица размера M × N. Упорядочить ее строки так, чтобы их первые элементы образовывали возрастающую последовательность.
+
+def grow(lenght, mass):
+    for i in range(lenght-1):
+        if mass[i+1][0] < mass[i][0]:
+            return None
+    return True
+            
+print("Введите число строк матрицы (М):")
+m = int(input())
+print("Введите число столбцов матрицы (N):")
+n = int(input())
+
+
+print("Теперь введите элементы матрицы:")
+a = [[int(input()) for j in range(n)] for i in range(m)]
+
+print("Вы ввели матрицу:")
+for i in range (m):
+    print(a[i])
+
+print(grow(m, a))
+
+while grow(m, a) != True:
+    for i in range(m-1):
+        if a[i][0] > a[i+1][0]:
+            a[i], a[i+1] = a[i+1], a[i]
+
+print("Преобразованная матрица:")
+for i in range (m):
+    print(a[i])
+
+
+5. Дана квадратная матрица A порядка M. Найти сумму элементов каждой ее диагонали, параллельной главной (начиная с одноэлементной диагонали).
+
+s = []
+t = 0
+
+print("Введите размер квадратной матрицы (М):")
+m = int(input())
+
+print("Теперь введите элементы матрицы:")
+a = [[int(input()) for j in range(m)] for i in range(m)]
+
+print("Вы ввели матрицу:")
+for i in range (m):
+    print(a[i])
+
+for i in range(m-1):
+    for j in range(i+1):
+        t += a[i-j][m-j-1]
+    s.append(t)
+    t = 0
+
+t = 0
+for i in range(m-1, 0, -1):
+    for j in range(i):
+        t += a[m-1-j][i-j-1]
+    s.append(t)
+    t = 0
+
+print("Выходные данные:", s)
